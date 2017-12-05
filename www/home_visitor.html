@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Visitor App</title>
+        <link rel="stylesheet" href="lib/mdl/material.min.css"/>
+        <script src="lib/mdl/material.min.js"></script>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <link rel="stylesheet" href="css/homeListPieces.css"/>
+        <link rel="stylesheet" href="css/utility.css"/>
+        <script type="text/javascript" src="lib/angularjs/angular.min.js"></script> 
+        <script type="text/javascript" src="lib/jquery/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="js/modulePieces.js"></script> 
+    </head>
+    <body>
+           <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+              <header class="mdl-layout__header">
+                        <span class="mdl-layout-title customPaddingBrand">
+                             <button id="demo-menu-lower-left" class="mdl-button mdl-js-button mdl-button--icon">
+                                   <i class="material-icons">more_vert</i>
+                             </button>
+                             Visitor App Museumlucky
+                        </span>
+                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="demo-menu-lower-left">
+                            <li class="mdl-menu__item">Add List<i class="material-icons">playlist_add</i></li>
+                            <li class="mdl-menu__item mdl-menu__item--full-bleed-divider">About Visitor App<i class="material-icons">note</i></li>
+                            <li class="mdl-menu__item">Log Out<i class="material-icons">power_settings_new</i></li>
+                       </ul>
+              </header>
+              <main class="mdl-layout__content">
+                  <div class="page-content">
+                      <div class="mdl-grid" ng-app="piecesVisitorApp" ng-controller="controllerPieces">
+                        <div class="mdl-cell mdl-cell--4-col"></div>
+                        <div class="mdl-cell mdl-cell--4-col">
+                            <!-- Tabs -->
+                            <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                                    <!-- option tabs -->
+                                    <div class="mdl-tabs__tab-bar">
+                                        <a href="#starks-panel" class="mdl-tabs__tab">Pieces List</a>
+                                        <a href="#lannisters-panel" class="mdl-tabs__tab">Selected Piece</a>
+                                    </div>
+                                     <!-- Pieces List tab-->
+                                     <div class="mdl-tabs__panel is-active" id="starks-panel">
+                                            <!-- search piece filter by piece name -->
+                                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                                                 <label class="mdl-button mdl-js-button mdl-button--icon mdl-button--raised mdl-js-ripple-effect mdl-button--accent" for="searchText" id="lbSearch">
+                                                   <i class="material-icons">search</i>
+                                                 </label>
+                                                 <div id="divExpandableSearch" class="mdl-textfield__expandable-holder">
+                                                     <input class="mdl-textfield__input" type="text" id="searchText" ng-model="pieceName" placeholder="Search Piece"/>
+                                                     <label  class="mdl-textfield__label" for="sample-expandable">Expandable Input</label>
+                                                 </div>
+                                            </div>
+                                             <!-- pieces deployed into cards list -->
+                                             <div  ng-repeat="piece in pieces | filter:pieceName" class="mdl-card mdl-shadow--2dp space-between-cards" ng-dblclick="showInfoPiece(piece)">
+                                                 <div class="mdl-card__title">
+                                                   <h2 class="mdl-card__title-text">{{ piece.nombre }}</h2>
+                                                 </div>
+                                                 <div class="mdl-card__media">
+                                                   <img src="data:image/jpg;base64,{{piece.imagen}}" width="330px" height="150px"/> 
+                                                 </div>
+                                                 <div class="mdl-card__supporting-text">
+                                                   {{ piece.sala }}
+                                                 </div>
+                                            </div>
+                                      </div>
+                                     <div class="mdl-tabs__panel" id="lannisters-panel">
+                                         <div class="mdl-grid">
+                                             <img id="img-piece" src="data:image/jpg;base64,{{psImage}}" width="300px" height="300px"/>
+                                              <h4> {{ psName }}</h4>
+                                              <h6 id="title-piece-location"> {{ psLocation }}</h6>
+                                                  {{ psDesc }}
+                                         </div> 
+                                     </div>
+                              </div>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col"></div>
+                     </div>
+                  </div>
+              </main>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="visitorApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Visitor App</title>
+        <link rel="stylesheet" href="lib/mdl/material.min.css"/>
+        <script src="lib/mdl/material.min.js"></script>
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+        <link rel="stylesheet" href="css/utility.css"/>
+        <script type="text/javascript" src="lib/angularjs/angular.min.js"></script> 
+        <script type="text/javascript" src="lib/jquery/jquery-2.2.4.min.js"></script>
+        <script type="text/javascript" src="js/moduleVisitor.js"></script> 
+        
+    </head>
+    <body>
+        <!-- Always shows a header, even in smaller screens. -->
+            <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+              <header class="mdl-layout__header">
+                  <span class="mdl-layout-title">MuseumLucky</span>
+              </header>
+              <main class="mdl-layout__content">
+                  <div class="page-content">
+                      <div class="mdl-grid" ng-controller="controllerLogin">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input customFontSize" type="text" id="itxtUserName"/>
+                                <label class="mdl-textfield__label" for="itxtUserName">Username</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input customFontSize" type="password" id="ipPsw"/>
+                                <label class="mdl-textfield__label" for="ipPsw">Password</label>
+                            </div>
+                            <br>
+                            <button ng-click="validateUserExist()" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored">
+                                Login
+                            </button>
+                            <br>
+                            <div id="progress"></div>
+                        </div>
+                     </div>
+                  </div>
+              </main>
+            <script type="text/javascript" src="cordova.js"></script>
+    </body>
+</html>
